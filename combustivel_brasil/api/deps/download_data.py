@@ -3,7 +3,7 @@ import urllib.error
 import urllib.request
 
 
-def get_dados(remote_url: str, local_file: str) -> tuple(str, bool):
+def get_dados(remote_url: str, local_file: str) -> tuple[str, bool]:
     socket.setdefaulttimeout(1000)
     try:
         urllib.request.urlretrieve(url=remote_url, filename=local_file)
