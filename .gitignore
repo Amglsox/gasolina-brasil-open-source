@@ -165,6 +165,6 @@ cython_debug/
 
 *.tar.gz
 
-./combustivel_brasil/airflow/logs/*
+*./combustivel_brasil/airflow/logs/*
 
 *.csv
