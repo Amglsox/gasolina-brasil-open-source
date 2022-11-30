@@ -1,11 +1,15 @@
 [tool.poetry]
-name = "combustivel_brasil"
+name = "combustivel-brasil"
 version = "0.1.0"
 description = ""
-authors = ["lucas.mari <lucashrm97@outlook.com>"]
+authors = ["lucas.mari1 <lucas.mari@avenuecode.com>"]
+readme = "README.md"
+packages = [{include = "combustivel_brasil"}]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.11"
+apiflask = "^1.1.3"
+flask = {version = "2.0.0", extras = ["async"]}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
@@ -24,7 +28,7 @@ pre-commit = "^2.18.1"                    # Runs a pipeline before commiting cod
 commitizen = "^2.27.0"                    # Check commit messages
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
@@ -81,6 +85,7 @@ ignore = [   # Choose the flake8 errors to ignore globally here
   "ANN1",    # Missing type annotation for self in methot or cls method
   "D401",
   "D101",
+  "D103"
 ]
 per-file-ignores = [     # Choose the flake8 errors to ignore per file here
   "*/__init__.py:F401",  # Ignore imported but unused in __init__.py files
@@ -89,8 +94,7 @@ per-file-ignores = [     # Choose the flake8 errors to ignore per file here
 exclude = [
     ".venv/*",
     ".vscode/*",
-    "cdk.out/*",
-    "apache_druid_example/apache-druid-24.0.1/*"
+    "cdk.out/*"
 ]
 # See other flake8 extensions here: https://github.com/DmytroLitvinov/awesome-flake8-extensions
 
@@ -102,8 +106,7 @@ skips = [      # Choose the bandit errors to ignore globally
 ]
 exclude_dirs = [
   ".venv",
-  "cdk.out",
-  "apache_druid_example/apache-druid-24.0.1/*"
+  "cdk.out"
 ]
 
 [tool.pytest.ini_options]
