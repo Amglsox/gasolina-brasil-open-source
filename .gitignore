@@ -168,3 +168,7 @@ cython_debug/
 *./combustivel_brasil/airflow/logs/*
 
 *.csv
+
+*.zip
+
+*.sh
