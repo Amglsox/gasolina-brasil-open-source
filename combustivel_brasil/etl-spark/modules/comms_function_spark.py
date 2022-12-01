@@ -29,7 +29,7 @@ def add_year(dataframe: DataFrame, column: str) -> DataFrame:
         :param dataframe:
         :return: Dataframe
     """
-    dataframe = dataframe.withColumn("year", year(to_date(col(column), "dd/MM/yyyy")))
+    dataframe = dataframe.withColumn("ano", year(to_date(col(column), "dd/MM/yyyy")))
     return dataframe
 
 

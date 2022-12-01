@@ -16,21 +16,25 @@ def parse_columns_csv(schema: list, dataframe: DataFrame) -> DataFrame:
     """
     try:
         for item in schema:
-            if item["type"] == "FLOAT":
-                dataframe = dataframe.withColumn(item["name"], translate(col(item["name"]), ",", ".").cast("double"))
-            elif item["type"] == "INTEGER":
-                dataframe = dataframe.withColumn(item["name"], col(item["name"]).cast("long"))
-            elif item["type"] == "STRING":
-                dataframe = dataframe.withColumn(item["name"], trim(col(item["name"])).cast("string"))
-            elif item["type"] == "BOOLEAN":
-                dataframe = dataframe.withColumn(item["name"], col(item["name"]).cast("boolean"))
-            elif item["type"] == "TIMESTAMP" or item["type"] == "DATETIME":
-                dataframe = dataframe.withColumn(item["name"], col(item["name"]).cast("timestamp"))
-            elif item["type"] == "DATE":
-                dataframe = dataframe.withColumn(item["name"], to_date(col(item["name"]), "dd/MM/yyyy").cast("date"))
-            elif item["type"] == "NUMERIC":
+            if item["data_type"] == "FLOAT":
                 dataframe = dataframe.withColumn(
-                    item["name"], translate(col(item["name"]), ",", ".").cast("decimal(38,2)")
+                    item["column_name"], translate(col(item["column_name"]), ",", ".").cast("double")
+                )
+            elif item["data_type"] == "INTEGER":
+                dataframe = dataframe.withColumn(item["column_name"], col(item["column_name"]).cast("long"))
+            elif item["data_type"] == "STRING":
+                dataframe = dataframe.withColumn(item["column_name"], trim(col(item["column_name"])).cast("string"))
+            elif item["data_type"] == "BOOLEAN":
+                dataframe = dataframe.withColumn(item["column_name"], col(item["column_name"]).cast("boolean"))
+            elif item["data_type"] == "TIMESTAMP" or item["data_type"] == "DATETIME":
+                dataframe = dataframe.withColumn(item["column_name"], col(item["column_name"]).cast("timestamp"))
+            elif item["data_type"] == "DATE":
+                dataframe = dataframe.withColumn(
+                    item["column_name"], to_date(col(item["column_name"]), "dd/MM/yyyy").cast("date")
+                )
+            elif item["data_type"] == "NUMERIC":
+                dataframe = dataframe.withColumn(
+                    item["column_name"], translate(col(item["column_name"]), ",", ".").cast("decimal(38,2)")
                 )
         return dataframe
     except Exception as ex:

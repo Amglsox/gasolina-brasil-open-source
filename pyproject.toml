@@ -102,7 +102,8 @@ exclude = [
 skips = [      # Choose the bandit errors to ignore globally
   "B101",      # Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
   "B310",
-  "B104"
+  "B104",
+  "B608"
 ]
 exclude_dirs = [
   ".venv",
